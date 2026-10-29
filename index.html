@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0a12" />
+  <meta name="description" content="A spooky story generator powered by open-weight AI running locally with Ollama." />
+  <title>Ghostlight — Ghost in the Machine</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Ghostlight home"><span class="brand-mark">✦</span> GHOSTLIGHT</a>
+    <div class="top-status"><span class="status-dot"></span><span id="connectionStatus">LOCAL MODE READY</span></div>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <p class="eyebrow">AN OPEN-SOURCE AI EXPERIMENT · OCTOBER 31</p>
+      <h1>Every machine<br />has a <em>ghost story.</em></h1>
+      <p class="hero-copy">Summon a strange little tale from the dark. Ghostlight can use an open-weight model running on your own machine—or tell a handcrafted story without an internet connection.</p>
+      <div class="hero-note"><span>☾</span> Your stories stay in this browser unless you choose to copy them.</div>
+    </section>
+
+    <section class="summoning-card" aria-labelledby="summonTitle">
+      <div class="card-heading">
+        <div>
+          <p class="eyebrow">THE STORY ENGINE</p>
+          <h2 id="summonTitle">Set the scene</h2>
+        </div>
+        <span class="sigil" aria-hidden="true">◉</span>
+      </div>
+
+      <form id="storyForm">
+        <label for="prompt">What should haunt this story?</label>
+        <textarea id="prompt" rows="3" maxlength="500" placeholder="A forgotten arcade machine that still remembers every player...">A forgotten arcade machine that still remembers every player</textarea>
+
+        <div class="field-grid">
+          <div>
+            <label for="mood">Atmosphere</label>
+            <select id="mood">
+              <option value="quiet and unsettling">Quietly unsettling</option>
+              <option value="gothic and atmospheric">Gothic</option>
+              <option value="playful spooky">Playfully spooky</option>
+              <option value="folklore-inspired and mysterious">Folklore mystery</option>
+              <option value="melancholic and full of remembrance">Remembrance</option>
+            </select>
+          </div>
+          <div>
+            <label for="length">Story length</label>
+            <select id="length">
+              <option value="short">Short</option>
+              <option value="medium" selected>Medium</option>
+              <option value="long">Long</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="engine-box">
+          <div class="engine-top">
+            <label for="engine">Story engine</label>
+            <span class="open-label"><span class="status-dot"></span> OPEN MODEL OPTIONAL</span>
+          </div>
+          <select id="engine">
+            <option value="local">Local open-weight AI (Ollama)</option>
+            <option value="fallback">Offline story engine (no model needed)</option>
+          </select>
+          <div id="modelSettings" class="model-settings">
+            <label for="modelName">Local model name</label>
+            <input id="modelName" type="text" value="llama3.2" autocomplete="off" />
+            <p class="hint">Requires Ollama installed and a model downloaded on this computer.</p>
+          </div>
+        </div>
+
+        <button id="summonButton" class="summon-button" type="submit"><span>✧</span> <span id="buttonText">SUMMON A STORY</span> <span class="button-arrow">↗</span></button>
+      </form>
+    </section>
+
+    <section id="resultSection" class="result-card" aria-live="polite">
+      <div class="result-top">
+        <div><p class="eyebrow">TRANSMISSION RECEIVED</p><h2 id="resultTitle">The machine is listening.</h2></div>
+        <button id="copyButton" class="copy-button" type="button" disabled>Copy story</button>
+      </div>
+      <div id="storyOutput" class="story-output">
+        <p class="empty-state">Your story will appear here. Choose a prompt, set the atmosphere, and summon something from the signal.</p>
+      </div>
+      <div id="resultMeta" class="result-meta">AWAITING FIRST TRANSMISSION</div>
+    </section>
+
+    <section class="about-grid">
+      <article class="about-item"><span class="about-icon">⌘</span><h3>Open by design</h3><p>Connect a locally hosted open-weight model instead of relying on a proprietary AI API.</p></article>
+      <article class="about-item"><span class="about-icon">◌</span><h3>Private by default</h3><p>With Ollama, generation happens on your computer. Your prompt is not sent to a hosted AI service by this app.</p></article>
+      <article class="about-item"><span class="about-icon">☾</span><h3>Works without AI</h3><p>The built-in story engine works offline, so the experience remains usable without a model.</p></article>
+    </section>
+  </main>
+
+  <footer><span>GHOSTLIGHT / A GHOST IN THE MACHINE PROJECT</span><span>MADE FOR THE OPEN-SOURCE AI CHALLENGE</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
